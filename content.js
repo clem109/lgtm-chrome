@@ -1,66 +1,3 @@
-const element = document.querySelector("#new_comment_field");
-
-// Check if the element was found
-if (element) {
-  // Add an event listener for the "input" event
-  element.addEventListener("input", (event) => {
-    // Get the new text content of the element
-    const text = event.target.value;
-
-    // Check if the text content equals "LGTM"
-    if (text === "LGTM") {
-      const tooltip = document.querySelector(".tooltip");
-      if (tooltip) {
-        tooltip.style.display = "block";
-        return;
-      }
-      // Create the custom element
-      const wrapper = document.createElement("div");
-      wrapper.classList.add("tooltip");
-
-      // Create a new "strong" element for the title
-      const title = document.createElement("strong");
-      // Set the text content of the title
-      title.innerHTML = "Alternative Suggestions:";
-      title.classList.add("tooltip-title");
-
-      // Add the title as a child of the tooltip
-      wrapper.appendChild(title);
-
-      // Create a new "button" element for the close button
-      const closeButton = document.createElement("button");
-      // Set the text content of the close button
-      closeButton.innerHTML = "Close";
-      closeButton.classList.add("tooltip-close-button");
-
-      // Add an event listener to hide the tooltip when the close button is clicked
-      closeButton.addEventListener("click", () => {
-        wrapper.style.display = "none";
-      });
-
-      // Add the close button as a child of the tooltip
-      wrapper.appendChild(closeButton);
-
-      // Add the alternative suggestions to the element
-      alternatives.forEach((alternative) => {
-        const option = document.createElement("div");
-        option.classList.add("tooltip-option");
-        option.textContent = alternative;
-
-        // Add an event listener to replace the text "LGTM" with the selected option
-        option.addEventListener("click", () => {
-          element.value = alternative;
-        });
-
-        wrapper.appendChild(option);
-      });
-
-      // Add the custom element to the page
-      document.body.appendChild(wrapper);
-    }
-  });
-}
-
 const alternatives = [
   "This pull request is so good, I'm tempted to start dancing like the 80's guy from the Thriller music video",
   "I may not be a professional code reviewer, but I know a great pull request when I see one",
@@ -73,6 +10,97 @@ const alternatives = [
   "I'm not the best at reviewing code, but even I can tell that this pull request is a work of art",
   "I don't have much experience with code, but I know a great pull request when I see one - and this one is definitely great",
 ];
+
+// Get the target element
+function getTargetElement() {
+  return document.querySelector("#new_comment_field");
+}
+
+// Create the custom element
+function createCustomElement(element) {
+  const wrapper = document.createElement("div");
+  wrapper.classList.add("tooltip");
+
+  // Create a new "strong" element for the title
+  const title = document.createElement("strong");
+  // Set the text content of the title
+  title.innerHTML = "Alternative Suggestions:";
+  title.classList.add("tooltip-title");
+
+  // Add the title as a child of the tooltip
+  wrapper.appendChild(title);
+
+  // Create a new "button" element for the close button
+  const closeButton = document.createElement("button");
+  // Set the text content of the close button
+  closeButton.innerHTML = "X";
+  closeButton.classList.add("tooltip-close-button");
+
+  // Add an event listener to hide the tooltip when the close button is clicked
+  closeButton.addEventListener("click", () => {
+    wrapper.style.display = "none";
+  });
+
+  // Add the close button as a child of the tooltip
+  wrapper.appendChild(closeButton);
+
+  // Add the alternative suggestions to the element
+  alternatives.forEach((alternative) => {
+    const option = document.createElement("div");
+    option.classList.add("tooltip-option");
+    option.textContent = alternative;
+
+    // Add an event listener to replace the text "LGTM" with the selected option
+    option.addEventListener("click", () => {
+      element.value = alternative;
+    });
+
+    wrapper.appendChild(option);
+  });
+
+  // Add the custom element to the page
+  document.body.appendChild(wrapper);
+}
+
+// Add the event listeners
+function addEventListeners(element) {
+  // Add an event listener for the "input" event
+  element.addEventListener("input", (event) => {
+    // Get the new text content of the element
+    const text = event.target.value;
+
+    // Check if the text content equals "LGTM"
+    if (text === "LGTM") {
+      // Get the tooltip element
+      const tooltip = document.querySelector(".tooltip");
+
+      // Check if the tooltip element exists
+      if (tooltip) {
+        // Show the tooltip
+        tooltip.style.display = "block";
+        return;
+      }
+
+      // Create the custom element
+      createCustomElement(element);
+    }
+  });
+}
+
+// Main function
+function main() {
+  // Get the target element
+  const element = getTargetElement();
+
+  // Check if the element was found
+  if (element) {
+    // Add the event listeners
+    addEventListeners(element);
+  }
+}
+
+// Call the main function
+main();
 
 // Inject the styles into the page
 chrome.tabs.insertCSS({
