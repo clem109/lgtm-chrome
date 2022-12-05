@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "LGTM Alternative Suggestions",
+  "version": "1.0.0",
+  "description": "Shows alternative suggestions when the text 'LGTM' is entered in a GitHub pull request",
+
+  "permissions": ["tabs"],
+	"content_scripts": [
+    {
+      "matches": ["https://github.com/*"],
+			"css": ["style.css"],
+      "js": ["content.js"]
+    }
+  ]
+}

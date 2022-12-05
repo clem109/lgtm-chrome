@@ -1,0 +1,43 @@
+.tooltip {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  padding: 10px 0;
+}
+
+.tooltip-title {
+  padding-left: 10px;
+  font-weight: bold;
+}
+
+.tooltip-option {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.tooltip-option:hover {
+  background-color: #f0f0f0;
+}
+
+.close-button {
+  /* position the button in the top right corner */
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  /* style the button */
+  width: 30px;
+  height: 30px;
+  background-color: #ccc;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+
+  /* add the X character inside the button using the :before pseudo-element */
+  &:before {
+    content: 'X';
+  }
+}
