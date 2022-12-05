@@ -11,9 +11,11 @@ const alternatives = [
   "I don't have much experience with code, but I know a great pull request when I see one - and this one is definitely great",
 ];
 
+const PULL_REQUEST_REVIEW_BODY = "#pull_request_review_body";
+
 // Get the target element
 function getTargetElement() {
-  return document.querySelector("#new_comment_field");
+  return document.querySelector(PULL_REQUEST_REVIEW_BODY);
 }
 
 // Create the custom element
