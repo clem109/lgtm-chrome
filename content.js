@@ -55,6 +55,7 @@ function createCustomElement(element) {
     // Add an event listener to replace the text "LGTM" with the selected option
     option.addEventListener("click", () => {
       element.value = alternative;
+      wrapper.style.display = "none";
     });
 
     wrapper.appendChild(option);
@@ -103,8 +104,3 @@ function main() {
 
 // Call the main function
 main();
-
-// Inject the styles into the page
-chrome.tabs.insertCSS({
-  file: "style.css",
-});
