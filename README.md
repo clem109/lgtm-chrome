@@ -17,4 +17,4 @@ See suggestions:
 ![See suggestions](./suggestions.png)
 
 Output:
-![Output when submitting the review](./suggestions.png)
+![Output when submitting the review](./output.png)
