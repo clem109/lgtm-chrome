@@ -63,10 +63,9 @@ function createCustomElement(element) {
     const option = document.createElement("div");
     option.classList.add("tooltip-option");
     option.textContent = alternative;
-
     // Add an event listener to replace the text "LGTM" with the selected option
     option.addEventListener("click", () => {
-      element.value = alternative;
+      element.value = `${alternative} :partying_face:`;
       wrapper.style.display = "none";
     });
 
