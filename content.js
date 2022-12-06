@@ -9,6 +9,16 @@ const alternatives = [
   "I don't know about you, but I'm ready to give this pull request a standing ovation",
   "I'm not the best at reviewing code, but even I can tell that this pull request is a work of art",
   "I don't have much experience with code, but I know a great pull request when I see one - and this one is definitely great",
+  "This pull request is like a fine wine - it only gets better with age. Approved!",
+  "I don't always approve of pull requests, but when I do, it's because they're as perfect as this one. Approved!",
+  "I'm not a pull request approval expert, but I know a good one when I see it. This is a good one. Approved!",
+  "If a pull request were a sandwich, this would be a five-star gourmet masterpiece. Approved!",
+  "I'm no fortune teller, but I foresee great things for this pull request. Approved!",
+  "I was going to reject this pull request, but then I realized I don't make the rules around here. Approved!",
+  "I may not be a pull request approval expert, but I am a fan of good code. This is good code. Approved!",
+  "I don't know about you, but I think this pull request is pure gold. Approved!",
+  "If I were a pull request, I would want to be this pull request. Approved!",
+  "I've seen some impressive pull requests in my time, but this one takes the cake. Or should I say, takes the merge? Approved!",
 ];
 
 const PULL_REQUEST_REVIEW_BODY = "#pull_request_review_body";
@@ -46,8 +56,10 @@ function createCustomElement(element) {
   // Add the close button as a child of the tooltip
   wrapper.appendChild(closeButton);
 
+  const optionsParent = document.createElement("div");
+  optionsParent.classList.add("tooltip-options-list");
   // Add the alternative suggestions to the element
-  alternatives.forEach((alternative) => {
+  shuffleArray(alternatives).forEach((alternative) => {
     const option = document.createElement("div");
     option.classList.add("tooltip-option");
     option.textContent = alternative;
@@ -58,8 +70,10 @@ function createCustomElement(element) {
       wrapper.style.display = "none";
     });
 
-    wrapper.appendChild(option);
+    optionsParent.appendChild(option);
   });
+
+  wrapper.appendChild(optionsParent);
 
   // Add the custom element to the page
   document.body.appendChild(wrapper);
@@ -89,6 +103,18 @@ function addEventListeners(element) {
     }
   });
 }
+
+const shuffleArray = (arr) => {
+  // Loop through the array and swap each element with a random element from the array
+  for (let i = 0; i < arr.length; i++) {
+    const randomIndex = Math.floor(Math.random() * arr.length);
+    const temp = arr[i];
+    arr[i] = arr[randomIndex];
+    arr[randomIndex] = temp;
+  }
+
+  return arr;
+};
 
 // Main function
 function main() {

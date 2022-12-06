@@ -7,6 +7,7 @@
   z-index: 9999;
   padding: 10px 0;
 
+
   /* Add the animation */
   animation: slideDown 0.5s ease-in;
 }
@@ -27,6 +28,11 @@
   font-weight: bold;
 }
 
+.tooltip-options-list {
+  max-height: 200px;
+  overflow-y: scroll;
+}
+
 .tooltip-option {
   padding: 5px 10px;
   cursor: pointer;
@@ -34,4 +40,16 @@
 
 .tooltip-option:hover {
   background-color: #f0f0f0;
+}
+
+
+.tooltip-close-button {
+  border: none;
+  background-color: black;
+  color: white;
+  font: inherit;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
