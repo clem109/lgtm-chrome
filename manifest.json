@@ -3,12 +3,14 @@
   "name": "LGTM Alternative Suggestions",
   "version": "1.0.0",
   "description": "Shows alternative suggestions when the text 'LGTM' is entered in a GitHub pull request",
-
+  "icons": {
+    "128": "icon128.png"
+  },
   "permissions": ["tabs"],
-	"content_scripts": [
+  "content_scripts": [
     {
       "matches": ["https://github.com/*"],
-			"css": ["style.css"],
+      "css": ["style.css"],
       "js": ["content.js"]
     }
   ]
