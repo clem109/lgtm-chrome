@@ -21,6 +21,17 @@ const alternatives = [
   "I've seen some impressive pull requests in my time, but this one takes the cake. Or should I say, takes the merge? Approved!",
 ];
 
+const approvalImages = [
+  "https://media.giphy.com/media/xSM46ernAUN3y/giphy-downsized.gif",
+  "https://media.giphy.com/media/hm8YCJd7ORdC70I6S3/giphy.gif",
+  "https://media.giphy.com/media/BohThTj3crJdzNMOoK/giphy.gif",
+  "https://media.giphy.com/media/eNjSnz3TaJqkumVRry/giphy.gif",
+  "https://media.giphy.com/media/LRBJsgFM0u0TH6wW1p/giphy.gif",
+  "https://media.giphy.com/media/axi5FQSAOjYQdpicgq/giphy.gif",
+  "https://media.giphy.com/media/SmoCFhZCi1kzu/giphy.gif",
+  "https://media.giphy.com/media/myRQnhrdKEryxF6xSK/giphy.gif",
+];
+
 const PULL_REQUEST_REVIEW_BODY = "#pull_request_review_body";
 
 // Get the target element
@@ -63,9 +74,10 @@ function createCustomElement(element) {
     const option = document.createElement("div");
     option.classList.add("tooltip-option");
     option.textContent = alternative;
+    const imageURL = pickRandom(approvalImages);
     // Add an event listener to replace the text "LGTM" with the selected option
     option.addEventListener("click", () => {
-      element.value = `${alternative} :partying_face:`;
+      element.value = `${alternative} :partying_face: <br> ![I approve](${imageURL})`;
       wrapper.style.display = "none";
     });
 
@@ -114,6 +126,11 @@ const shuffleArray = (arr) => {
 
   return arr;
 };
+
+function pickRandom(arr) {
+  let randomIndex = Math.floor(Math.random() * arr.length);
+  return arr[randomIndex];
+}
 
 // Main function
 function main() {

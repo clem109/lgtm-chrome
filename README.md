@@ -15,3 +15,6 @@ Enter LGTM on a pull request:
 
 See suggestions:
 ![See suggestions](./suggestions.png)
+
+Output:
+![Output when submitting the review](./suggestions.png)
